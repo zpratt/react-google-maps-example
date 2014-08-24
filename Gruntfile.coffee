@@ -2,22 +2,31 @@ module.exports = (grunt) ->
     grunt.initConfig
         pkg: grunt.file.readJSON 'package.json'
 
+        react:
+            dist:
+                options:
+                    extension: 'js'
+                    ignoreMTime: false
+                files:
+                    'lib/overlay-component.js' : ['jsx/overlay-component.jsx']
+                    'index.js' : ['jsx/index.jsx']
+
         browserify:
             options:
-                transform: ['reactify']
-                debug: true
-            all:
+#                transform: ['reactify']
+                bundleOptions:
+#                    standalone: 'app.overlay'
+                    debug: true
+            dist:
                 files: [
                     src: [
-#                        'node_modules/lodash/dist/lodash.js'
-#                        'node_modules/react/dist/react.js'
-                        'jsx/*.jsx'
-                        'lib/*.js'
+                        'index.js'
                     ]
                     dest: 'dist/app.js'
                     ext: '.js'
                 ]
 
     grunt.loadNpmTasks 'grunt-browserify'
+    grunt.loadNpmTasks 'grunt-react'
 
-    grunt.registerTask 'default', ['browserify']
+    grunt.registerTask 'default', ['react', 'browserify']
