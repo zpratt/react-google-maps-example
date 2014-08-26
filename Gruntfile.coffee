@@ -2,6 +2,12 @@ module.exports = (grunt) ->
     grunt.initConfig
         pkg: grunt.file.readJSON 'package.json'
 
+        jshint:
+            options:
+                jshintrc: '.jshintrc',
+            production:
+                src: ['lib/*.js']
+
         react:
             dist:
                 options:
@@ -28,5 +34,6 @@ module.exports = (grunt) ->
 
     grunt.loadNpmTasks 'grunt-browserify'
     grunt.loadNpmTasks 'grunt-react'
+    grunt.loadNpmTasks 'grunt-contrib-jshint'
 
     grunt.registerTask 'default', ['react', 'browserify']

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/zpratt/react-google-maps-example",
   "dependencies": {
+    "backbone": "^1.1.2",
     "lodash": "^2.4.1",
     "react": "^0.11.1"
   },
@@ -30,6 +31,7 @@
     "browserify": "^5.10.1",
     "grunt": "^0.4.5",
     "grunt-browserify": "^2.1.4",
+    "grunt-contrib-jshint": "^0.10.0",
     "http-server": "^0.6.1",
     "reactify": "^0.14.0"
   }
