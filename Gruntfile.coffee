@@ -33,8 +33,17 @@ module.exports = (grunt) ->
                     ext: '.js'
                 ]
 
+        mochaTest:
+            test:
+                options:
+                    reporter: 'spec'
+                    require: 'coffee-script/register'
+                src: ['test/**/*.spec.coffee']
+
     grunt.loadNpmTasks 'grunt-browserify'
     grunt.loadNpmTasks 'grunt-react'
     grunt.loadNpmTasks 'grunt-contrib-jshint'
+    grunt.loadNpmTasks 'grunt-mocha-test'
 
-    grunt.registerTask 'default', ['react', 'browserify']
+    grunt.registerTask 'default', ['mochaTest', 'react', 'browserify']
+    grunt.registerTask 'test', ['mochaTest']

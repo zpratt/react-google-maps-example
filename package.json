@@ -5,7 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "grunt && ./node_modules/.bin/http-server",
-    "test": "npm test"
+    "test": "node_modules/.bin/mocha --compilers coffee:coffee-script/register"
   },
   "repository": {
     "type": "git",
@@ -24,16 +24,23 @@
   "homepage": "https://github.com/zpratt/react-google-maps-example",
   "dependencies": {
     "backbone": "^1.1.2",
+    "jquery": "^2.1.1",
     "lodash": "^2.4.1",
     "react": "^0.11.1"
   },
   "devDependencies": {
     "browserify": "^5.10.1",
+    "chai": "^1.9.1",
+    "coffee-script": "^1.8.0",
     "coffeeify": "^0.7.0",
     "grunt": "^0.4.5",
     "grunt-browserify": "^2.1.4",
     "grunt-contrib-jshint": "^0.10.0",
+    "grunt-mocha-test": "^0.11.0",
     "http-server": "^0.6.1",
+    "jsdom": "^1.0.0-pre.5",
+    "mocha": "^1.21.4",
+    "proxyquire": "^1.0.1",
     "reactify": "^0.14.0"
   }
 }
