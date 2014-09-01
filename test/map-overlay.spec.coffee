@@ -1,6 +1,6 @@
 jsdom = require 'jsdom'
 assert = require('chai').assert
-sinon = require('sinon')
+sinon = require 'sinon'
 
 google = require('../resources/google-maps-stub')
 
@@ -12,7 +12,8 @@ document = window.document
 global.window = window
 global.document = document
 
-$ = require('jquery')
+$ = require 'jquery'
+_ = require 'lodash'
 
 MapOverlay = require '../lib/map-overlay'
 
@@ -23,8 +24,8 @@ describe 'Map Overlay Tests', ->
     overlay = null
     sandbox = null
 
-    expectedTop = 123
-    expectedLeft = 456
+    expectedTop = _.random 1, 300
+    expectedLeft = _.random 1, 300
 
     setupStubs = () ->
         sandbox = sinon.sandbox.create()
