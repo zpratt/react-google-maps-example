@@ -23,6 +23,9 @@ describe 'Map Overlay Tests', ->
     overlay = null
     sandbox = null
 
+    expectedTop = 123
+    expectedLeft = 456
+
     setupStubs = () ->
         sandbox = sinon.sandbox.create()
 
@@ -30,14 +33,22 @@ describe 'Map Overlay Tests', ->
             overlayLayer: overlayLayer
         )
 
+        sandbox.stub(google.maps.OverlayView.prototype, 'getProjection')
+            .returns(
+                fromLatLngToDivPixel: (point) ->
+                    if point is location
+                        x: expectedLeft
+                        y: expectedTop
+            )
+
+
     beforeEach ->
         setupStubs()
 
-        $('body').append(overlayLayer);
+        $('body').append(overlayLayer)
 
         location = new google.maps.LatLng()
         overlayElement = document.createElement 'div'
-        overlayElement.className = 'overlay-view'
 
         overlay = new MapOverlay overlayElement, location
 
@@ -52,4 +63,9 @@ describe 'Map Overlay Tests', ->
 
     it 'should append the element into the dom when onAdd is called', ->
         overlay.onAdd()
-        assert.equal $(overlayLayer).find('.overlay-view').length, 1
+        assert.equal $(overlayLayer).find(overlayElement).length, 1
+
+    it 'should position itself when draw is called', ->
+        overlay.draw()
+        assert.equal $(overlayElement).css('top'), expectedTop + 'px'
+        assert.equal $(overlayElement).css('left'), expectedLeft + 'px'
