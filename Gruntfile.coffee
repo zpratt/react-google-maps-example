@@ -6,7 +6,9 @@ module.exports = (grunt) ->
             options:
                 jshintrc: '.jshintrc',
             production:
-                src: ['lib/*.js']
+                src: [
+                    'lib/*.js'
+                ]
 
         react:
             dist:
