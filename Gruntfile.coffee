@@ -15,6 +15,9 @@ module.exports = (grunt) ->
                 indentation:
                     level: 'error'
                     value: 4
+                max_line_length:
+                    level: 'error'
+                    value: 90
 
             tests: [
                 'test/*.coffee'

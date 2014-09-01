@@ -1,5 +1,7 @@
 previousFragment = null
 
+Backbone = require 'backbone'
+
 class Hub extends Backbone.Router
     initialize: (options) ->
         routeSpec = ''
