@@ -10,6 +10,18 @@ module.exports = (grunt) ->
                     'lib/*.js'
                 ]
 
+        coffeelint:
+            options:
+                indentation:
+                    level: 'error'
+                    value: 4
+
+            tests: [
+                'test/*.coffee'
+            ]
+
+            gruntFile: 'Gruntfile.coffee'
+
         react:
             dist:
                 options:
@@ -46,6 +58,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-react'
     grunt.loadNpmTasks 'grunt-contrib-jshint'
     grunt.loadNpmTasks 'grunt-mocha-test'
+    grunt.loadNpmTasks 'grunt-coffeelint'
 
-    grunt.registerTask 'default', ['mochaTest', 'react', 'browserify']
-    grunt.registerTask 'test', ['mochaTest']
+    grunt.registerTask 'test', ['jshint', 'coffeelint', 'mochaTest']
+    grunt.registerTask 'default', ['test', 'react', 'browserify']
