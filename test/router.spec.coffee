@@ -2,7 +2,7 @@ jsdom = require 'jsdom'
 assert = require('chai').assert
 sinon = require 'sinon'
 
-baseMarkup = '<html><head><title></title></head><body></body></html>'
+baseMarkup = '<!DOCTYPE html><html><head><title></title></head><body></body></html>'
 window = jsdom.jsdom(baseMarkup).parentWindow
 
 document = window.document

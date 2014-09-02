@@ -37,6 +37,7 @@ module.exports = (grunt) ->
         browserify:
             options:
 #                transform: ['reactify']
+                external: ['google']
                 transform: ['coffeeify']
                 bundleOptions:
 #                    standalone: 'app.overlay'

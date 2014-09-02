@@ -4,7 +4,7 @@ sinon = require 'sinon'
 
 google = require('../resources/google-maps-stub')
 
-baseMarkup = '<html><head><title></title></head><body></body></html>'
+baseMarkup = '<!DOCTYPE html><html><head><title></title></head><body></body></html>'
 window = jsdom.jsdom(baseMarkup).parentWindow
 window.google = google
 
