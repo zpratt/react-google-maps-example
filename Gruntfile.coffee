@@ -25,6 +25,11 @@ module.exports = (grunt) ->
 
             gruntFile: 'Gruntfile.coffee'
 
+        sass:
+            dist:
+                files:
+                    'dist/css/index.css': 'sass/index.scss'
+
         react:
             dist:
                 options:
@@ -47,7 +52,8 @@ module.exports = (grunt) ->
                     src: [
                         'index.js'
                     ]
-                    dest: 'dist/app.js'
+#                    dest: 'dist/app.js'
+                    dest: 'dist/js/<%= pkg.name %>.js'
                     ext: '.js'
                 ]
 
@@ -58,11 +64,14 @@ module.exports = (grunt) ->
                     require: 'coffee-script/register'
                 src: ['test/**/*.spec.coffee']
 
+    require('time-grunt')(grunt)
+
     grunt.loadNpmTasks 'grunt-browserify'
     grunt.loadNpmTasks 'grunt-react'
     grunt.loadNpmTasks 'grunt-contrib-jshint'
     grunt.loadNpmTasks 'grunt-mocha-test'
     grunt.loadNpmTasks 'grunt-coffeelint'
+    grunt.loadNpmTasks 'grunt-sass'
 
     grunt.registerTask 'test', ['jshint', 'coffeelint', 'mochaTest']
-    grunt.registerTask 'default', ['test', 'react', 'browserify']
+    grunt.registerTask 'default', ['test', 'sass', 'react', 'browserify']

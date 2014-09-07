@@ -41,9 +41,11 @@
     "grunt-mocha-test": "^0.11.0",
     "http-server": "^0.6.1",
     "jsdom": "^1.0.0-pre.5",
+    "load-grunt-tasks": "^0.6.0",
     "mocha": "^1.21.4",
     "proxyquire": "^1.0.1",
     "reactify": "^0.14.0",
-    "sinon": "^1.10.3"
+    "sinon": "^1.10.3",
+    "time-grunt": "^1.0.0"
   }
 }
