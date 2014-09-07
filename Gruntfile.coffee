@@ -30,29 +30,18 @@ module.exports = (grunt) ->
                 files:
                     'dist/css/index.css': 'sass/index.scss'
 
-        react:
-            dist:
-                options:
-                    extension: 'js'
-                    ignoreMTime: false
-                files:
-                    'lib/overlay-component.js' : ['jsx/overlay-component.jsx']
-                    'index.js' : ['jsx/index.jsx']
-
         browserify:
             options:
-#                transform: ['reactify']
                 external: ['google']
-                transform: ['coffeeify']
+                transform: ['reactify', 'coffeeify']
                 bundleOptions:
 #                    standalone: 'app.overlay'
                     debug: true
             dist:
                 files: [
                     src: [
-                        'index.js'
+                        'index.jsx'
                     ]
-#                    dest: 'dist/app.js'
                     dest: 'dist/js/<%= pkg.name %>.js'
                     ext: '.js'
                 ]
@@ -74,4 +63,4 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-sass'
 
     grunt.registerTask 'test', ['jshint', 'coffeelint', 'mochaTest']
-    grunt.registerTask 'default', ['test', 'sass', 'react', 'browserify']
+    grunt.registerTask 'default', ['test', 'sass', 'browserify']

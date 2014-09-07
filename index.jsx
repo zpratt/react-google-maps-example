@@ -8,7 +8,7 @@
     var $ = require('jquery'),
         React = require('react'),
         Router = require('./lib/router.coffee'),
-        OverlayView = require('./lib/overlay-component'),
+        OverlayView = require('./lib/overlay-component.jsx'),
         loadMap = require('./lib/load-map');
 
     loadMap.load();
@@ -19,7 +19,7 @@
             mapOverlayView = new MapOverlay(overlayElement, overlayPoint);
 
         overlayElement.className = 'map-overlay';
-        React.renderComponent(OverlayView({phrase: 'from a rendered component'}), overlayElement);
+        React.renderComponent(<OverlayView phrase={'from a rendered component'} />, overlayElement);
         mapOverlayView.setMap(map);
     });
 }());
