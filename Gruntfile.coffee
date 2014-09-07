@@ -53,14 +53,8 @@ module.exports = (grunt) ->
                     require: 'coffee-script/register'
                 src: ['test/**/*.spec.coffee']
 
+    require('load-grunt-tasks')(grunt)
     require('time-grunt')(grunt)
-
-    grunt.loadNpmTasks 'grunt-browserify'
-    grunt.loadNpmTasks 'grunt-react'
-    grunt.loadNpmTasks 'grunt-contrib-jshint'
-    grunt.loadNpmTasks 'grunt-mocha-test'
-    grunt.loadNpmTasks 'grunt-coffeelint'
-    grunt.loadNpmTasks 'grunt-sass'
 
     grunt.registerTask 'test', ['jshint', 'coffeelint', 'mochaTest']
     grunt.registerTask 'default', ['test', 'sass', 'browserify']
