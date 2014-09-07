@@ -2,15 +2,11 @@ jsdom = require 'jsdom'
 assert = require('chai').assert
 sinon = require 'sinon'
 
-google = require('../resources/google-maps-stub')
-
-baseMarkup = '<!DOCTYPE html><html><head><title></title></head><body></body></html>'
-window = jsdom.jsdom(baseMarkup).parentWindow
+google = require '../resources/google-maps-stub'
+testUtils = require './helpers/utils.coffee'
+window = testUtils.setupDom()
 window.google = google
-
 document = window.document
-global.window = window
-global.document = document
 
 $ = require 'jquery'
 _ = require 'lodash'

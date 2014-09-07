@@ -1,14 +1,8 @@
 jsdom = require 'jsdom'
 assert = require('chai').assert
 sinon = require 'sinon'
-
-baseMarkup = '<!DOCTYPE html><html><head><title></title></head><body></body></html>'
-window = jsdom.jsdom(baseMarkup).parentWindow
-
-document = window.document
-global.window = window
-global.document = document
-global.navigator = window.navigator
+testUtils = require './helpers/utils.coffee'
+window = testUtils.setupDom()
 
 $ = require 'jquery'
 Backbone = require 'backbone'
