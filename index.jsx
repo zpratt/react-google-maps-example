@@ -8,7 +8,7 @@
     var $ = require('jquery'),
         React = require('react'),
         Router = require('./lib/router.coffee'),
-        OverlayView = require('./lib/overlay-component.jsx'),
+        OverlayView = require('./lib/overlay-component'),
         loadMap = require('./lib/load-map');
 
     loadMap.load();
